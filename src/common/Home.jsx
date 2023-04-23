@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useAuthContext } from '../utils/AuthProvider'
 import { Link, useNavigate } from 'react-router-dom'
-import API from '../utils/API'
+import axios from 'axios'
 
 export default function Home() {
   const navigate = useNavigate()
@@ -9,7 +9,7 @@ export default function Home() {
 
 
   function handleLogout() {
-    API.getLoggedOut().then(res => {
+    axios.get('/api/logout').then(res => {
       setUser(res.data.user)
       Swal.fire("Success", "Successfully Logged out", "success")
       navigate("/")

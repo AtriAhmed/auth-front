@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import API from "../utils/API"
 import { useAuthContext } from '../utils/AuthProvider'
 import { Link, useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 export default function Register() {
   const { user, setUser } = useAuthContext()
@@ -20,7 +20,7 @@ export default function Register() {
   }
 
   useEffect(() => {
-    API.getLoginStatus().then(res => {
+    axios.get('/api/login/status').then(res => {
       setUser(res.data.user)
       if (res.data.user?.type == "visitor") {
         setLoading(false)
@@ -63,7 +63,7 @@ export default function Register() {
       setErrors({ verify_password: "Password does not match" })
     } else {
       setLoading(true)
-      API.postNewUser(user).then(res => {
+      axios.post('/api/login', user).then(res => {
         resetInputs()
         console.log("successfully registered")
         navigate("/login")

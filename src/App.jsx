@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import { Outlet } from 'react-router'
 
 import './App.css'
-import API from './utils/API';
 import AuthProvider from './utils/AuthProvider';
 
 axios.defaults.baseURL = "http://localhost:5000/";
@@ -16,7 +15,7 @@ function App() {
   async function getUserStatus() {
     console.log("i checked")
     try {
-      const res = await API.getLoginStatus()
+      const res = await axios.get('/api/login/status')
       setUser(res.data.user)
       return res
     } catch (err) {

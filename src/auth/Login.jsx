@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
-import API from '../utils/API'
 import { Link } from 'react-router-dom'
 import { useAuthContext } from '../utils/AuthProvider'
+import axios from 'axios'
 
 export default function LoginCmp() {
   const { user, setUser } = useAuthContext()
@@ -22,7 +22,7 @@ export default function LoginCmp() {
   }
 
   useEffect(() => {
-    API.getLoginStatus().then(res => {
+    axios.get('/api/login/status').then(res => {
       setUser(res.data.user)
       if (res.data.user?.type == "visitor") {
         setLoading(false)
@@ -45,7 +45,7 @@ export default function LoginCmp() {
     if (loginInput.email == "") { setErrors((errors) => [...errors, "L'Email ne peut pas etre vide"]) }
     if (loginInput.password == "") { setErrors((errors) => [...errors, "Le Mot de passe ne peut pas etre vide"]) }
     else
-      API.postUserLogin({ email: loginInput.email, password: loginInput.password }).then(res => {
+      axios.post('/api/login', { email: loginInput.email, password: loginInput.password }).then(res => {
         setUser(res.data.user)
         if (res.data.user.accessId > 1) {
           navigate("/admin")

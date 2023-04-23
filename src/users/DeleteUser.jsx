@@ -2,26 +2,26 @@ import axios from 'axios'
 import React, { useState } from 'react'
 
 export default function DeleteUser() {
-    const [id,setId] = useState("")
+    const [id, setId] = useState("")
 
-    function handleId(e){
+    function handleId(e) {
         e.persist()
-        setId(()=>e.target.value)
+        setId(() => e.target.value)
     }
 
-    function handleSubmit(e){
+    function handleSubmit(e) {
         e.preventDefault()
-        axios.delete(`/api/user/${id}`).then(res=>{
+        axios.delete(`/api/users/${id}`).then(res => {
             console.log("deleted successfully")
-        }).catch(err=>{
+        }).catch(err => {
             console.log(err)
         })
     }
-  return (
-    <div>
-        <div className='text-xl font-bold'>Delete User</div>
-        <input placeholder='id' type="text" name='id' onChange={handleId} value={id} />
-        <button type='submit' onClick={handleSubmit}>Delete</button> 
-    </div>
-  )
+    return (
+        <div>
+            <div className='text-xl font-bold'>Delete User</div>
+            <input placeholder='id' type="text" name='id' onChange={handleId} value={id} />
+            <button type='submit' onClick={handleSubmit}>Delete</button>
+        </div>
+    )
 }

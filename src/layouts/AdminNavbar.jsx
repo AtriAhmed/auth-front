@@ -3,7 +3,7 @@ import React from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import RenderIfAId from '../utils/RenderIfAId'
 import { useAuthContext } from '../utils/AuthProvider'
-import API from '../utils/API'
+import axios from 'axios'
 
 
 export default function AdminNavbar() {
@@ -12,9 +12,9 @@ export default function AdminNavbar() {
 
 
   function handleLogout() {
-    API.getLoggedOut().then(res => {
+    axios.get('/api/logout').then(res => {
       setUser(res.data.user)
-      Swal.fire("Success", "Successfully Logged out", "success")
+      console.log("successfully logged out")
       navigate("/")
     }).catch(err => {
       console.log(err.response)
