@@ -23,60 +23,49 @@ export default function AdminNavbar() {
 
 
   return (
-    <nav expand='md' bg='dark' variant='dark'>
-      <div aria-controls='responsive-top-navbar' />
-      <div id='responsive-top-navbar'>
-        <div>MERN Passport MySQL</div>
-        <nav>
-          <NavLink to='/admin' className={({ isActive }) => { classNames(isActive ? 'active' : '') }}>
-            Dashboard
-          </NavLink>
-          <RenderIfAId aId={2}>
-            <NavLink
-              to='/manager'
-              className={({ isActive }) => { classNames(isActive ? 'active' : '') }}
-            >
-              Manager
-            </NavLink>
-          </RenderIfAId>
-          <RenderIfAId aId={3}>
-            <NavLink
-              to='/admin'
-              className={({ isActive }) => { classNames(isActive ? 'active' : '') }}
-            >
-              Admin
-            </NavLink>
-          </RenderIfAId>
+    <nav className='shadow-xl'>
+      <div className='font-semibold max-w-7xl flex p-4 justify-between mx-auto'>
+        <div className='text-xl font-bold'>Admin Navbar</div>
+        <NavLink to='/admin' className={({ isActive }) => { classNames(isActive ? 'active' : '') }}>
+          Dashboard
+        </NavLink>
+        <RenderIfAId aId={2}>
           <NavLink
-            to='/about'
+            to='/manager'
             className={({ isActive }) => { classNames(isActive ? 'active' : '') }}
           >
-            About
+            Manager
           </NavLink>
-        </nav>
-      </div>
-      <div
-        size='sm'
-        aria-label='Navbar action buttons'
-        className='p-0'
-      >
-        <button
+        </RenderIfAId>
+        <RenderIfAId >
+          <NavLink
+            to='/admin'
+            className={({ isActive }) => { classNames(isActive ? 'active' : '') }}
+          >
+            Admin
+          </NavLink>
+        </RenderIfAId>
+        <NavLink
+          to='/about'
+          className={({ isActive }) => { classNames(isActive ? 'active' : '') }}
+        >
+          About
+        </NavLink>
 
-          variant='outline-light'
-          className='text-capitalize px-1'
+        <div
+          size='sm'
+          aria-label='Navbar action buttons'
+          className='p-0'
         >
-          {`${user.username} `}
-          <div variant='light' className='p-1'>
-            {user.type}
-          </div>
-        </button>
-        <button
-          type='submit'
-          onClick={() => { handleLogout(); }}
-          variant='danger'
-        >
-          Log-out
-        </button>
+
+          <button
+            type='submit'
+            onClick={() => { handleLogout(); }}
+            variant='danger'
+          >
+            Log-out
+          </button>
+        </div>
       </div>
     </nav>
   )

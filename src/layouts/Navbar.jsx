@@ -2,6 +2,10 @@ import React from 'react'
 
 export default function Navbar() {
   return (
-    <div>Navbar</div>
+    <nav className='shadow-xl py-4 font-bold'>
+      <div className='max-w-7xl mx-auto'>
+        React Express PassportJs Auth
+      </div>
+    </nav>
   )
 }

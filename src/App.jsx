@@ -13,7 +13,6 @@ function App() {
 
 
   async function getUserStatus() {
-    console.log("i checked")
     try {
       const res = await axios.get('/api/login/status')
       setUser(res.data.user)
