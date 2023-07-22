@@ -1,9 +1,4 @@
-import axios from 'axios'
-import React, { useEffect } from 'react'
-import AllUsers from '../users/AllUsers'
-import CreateUser from '../users/CreateUser'
-import DeleteUser from '../users/DeleteUser'
-import UpdateUser from '../users/UpdateUser'
+import React from 'react'
 import RenderIfAId from '../utils/RenderIfAId'
 import { useAuthContext } from '../utils/AuthProvider'
 
@@ -41,10 +36,7 @@ export default function Dashboard() {
           </p>
         </div>
       </RenderIfAId>
-      <AllUsers />
-      <CreateUser />
-      <UpdateUser />
-      <DeleteUser />
+     
     </div>
   )
 

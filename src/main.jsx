@@ -12,6 +12,7 @@ import AdminLayout from './layouts/AdminLayout';
 import Layout from './layouts/Layout';
 import Register from './auth/Register';
 
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -24,7 +25,8 @@ const router = createBrowserRouter([
           {
             path: "",
             element: <Dashboard />
-          }
+          },
+
         ]
       },
       {

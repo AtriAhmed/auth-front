@@ -23,7 +23,7 @@ export default function AdminNavbar() {
 
 
   return (
-    <nav className='shadow-xl'>
+    <nav className='shadow-xl fixed w-full bg-gray-800 text-white z-10'>
       <div className='font-semibold max-w-7xl flex p-4 justify-between mx-auto'>
         <div className='text-xl font-bold'>Admin Navbar</div>
         <NavLink to='/admin' className={({ isActive }) => { classNames(isActive ? 'active' : '') }}>
@@ -53,9 +53,8 @@ export default function AdminNavbar() {
         </NavLink>
 
         <div
-          size='sm'
           aria-label='Navbar action buttons'
-          className='p-0'
+          className=''
         >
 
           <button
